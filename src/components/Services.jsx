@@ -27,7 +27,7 @@ const Services = () => {
                          </div>
                       
                       </div>
-                            <div className='w-fit lg:w-[303px] lg:border-r h-[30px] flex gap-2 lg:gap-[13px] pl-[10px] items-center mb-6 lg:mb-0'>
+                            <div className=' w-[303px] lg:border-r h-[30px] flex gap-2 lg:gap-[13px] pl-[10px] items-center mb-6 lg:mb-0'>
                                   <img src={serviceImage3} alt="" className='w-[24px] h-[24px]'/>
                                    <div >
                                      <h2 className='font-poppins text-[14px] lg:text-[18px] font-normal text-[#4B5563] lg:font-semibold lg:text-[#111827] mt-[-10px]'>Worldwide delivery</h2>
@@ -36,7 +36,7 @@ const Services = () => {
                                    </div>
                                  
                             </div>
-                                  <div className='w-fit lg:w-[303px]  h-[30px] flex gap-2 lg:gap-[13px] pl-[10px] items-center mb-6 lg:mb-0'>
+                                  <div className='w-[303px]  h-[30px] flex gap-2 lg:gap-[13px] pl-[10px] items-center mb-6 lg:mb-0'>
                      <img src={serviceImage4} alt="" className='w-[24px] h-[24px]'/>
                          <div>
                                     <h2 className='font-poppins text-[14px] lg:text-[18px] font-normal text-[#4B5563] lg:font-semibold lg:text-[#111827] mt-[-10px]'>Refunds policy</h2>

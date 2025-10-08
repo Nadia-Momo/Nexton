@@ -16,7 +16,33 @@ useEffect(()=>{
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 1,
-    arrows:false
+    arrows:false,
+    responsive: [
+      {
+        breakpoint: 1023,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 767,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          initialSlide: 2
+        }
+      },
+      {
+        breakpoint: 639,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
   };
 
 return (
@@ -24,13 +50,13 @@ return (
     <>
     <section className='mt-[176px] exploring'>
         
-<div className="container">
+<div className="container px-5 lg:px-0">
             <CommonHead commoncon1={'Recommendations.'} commoncon2={'Best matching products for you'}/>
   <Slider {...settings}>
    
         {
 
-allProducts.map((item)=>(
+allProducts.slice(0,6).map((item)=>(
 
 <ProductCard key={item.id} productImage={item.thumbnail} producttitle={item.title} pPrice={item.price} pCat={item.category} pDis={item.discountPercentage} pRating={item.rating} stock={item.stock}/> 
 

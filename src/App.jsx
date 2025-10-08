@@ -4,11 +4,14 @@ import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } 
 import LayoutOne from './layouts/LayoutOne'
 import Home from './pages/Home'
 import Checkout from './pages/Checkout'
+import ProductDetail from './pages/productDetail'
+
 const App = () => {
   const myRoute=createBrowserRouter(createRoutesFromElements(
     <Route path="/" element={<LayoutOne/>}>
       <Route index element={<Home/>}/>
       <Route path="/checkOut" element={<Checkout/>}/>
+<Route path='/productDetail' element={<ProductDetail/>}/>
     </Route>
   ))
   return (

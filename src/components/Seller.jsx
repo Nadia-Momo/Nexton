@@ -15,26 +15,49 @@ const Seller = () => {
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 1,
-    arrows:false
+    arrows:false,
+     responsive: [
+      {
+        breakpoint: 1023,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 767,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          initialSlide: 2
+        }
+      },
+      {
+        breakpoint: 639,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
   };
   return (
     <>
 
 <section id="seller" className='mt-[176px] exploring'>
     {/* Best Sellers. Best selling of the month */}
-    <div className="container">
+    <div className="container px-6 lg:px-0">
 <CommonHead commoncon1={'Best Sellers.'} commoncon2={'Best selling of the month'}/>
 <Slider {...settings}>
-
 {
 allProduct.slice(0,6).map((item)=>(
 <div><ProductCard key={item.id} productImage={item.thumbnail} producttitle={item.title} pPrice={item.price} pCat={item.category} pDis={item.discountPercentage} pRating={item.rating} stock={item.stock}/> </div>         
 ))
 }
-
 </Slider>
-    </div>
-
+</div>
 </section>
     </>
   )
