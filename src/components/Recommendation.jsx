@@ -3,13 +3,17 @@ import ProductCard from './ProductCard'
 import CommonHead from './common/CommonHead'
 import axios from 'axios'
 import Slider from 'react-slick';
+import { useNavigate } from 'react-router';
+
 const Recommendation = () => {
 const [allProducts,setAllproducts]=useState([])
+
 useEffect(()=>{
   axios.get('https://dummyjson.com/products')
 .then((res)=>{setAllproducts(res.data.products)})
 .catch((err)=>{console.log(err)})
 },[])
+
   var settings = {
     dots: true,
     infinite: true,
@@ -44,7 +48,12 @@ useEffect(()=>{
       }
     ]
   };
-
+// product detail handler
+const navigate=useNavigate()
+const handleDetails=(productDetails)=>{
+  
+  navigate(`/productDetails/${productDetails}`)
+}
 return (
 
     <>
@@ -56,9 +65,9 @@ return (
    
         {
 
-allProducts.slice(0,6).map((item)=>(
+allProducts.map((item)=>(
 
-<ProductCard key={item.id} productImage={item.thumbnail} producttitle={item.title} pPrice={item.price} pCat={item.category} pDis={item.discountPercentage} pRating={item.rating} stock={item.stock}/> 
+<ProductCard key={item.id} productImage={item.thumbnail} producttitle={item.title} pPrice={item.price} pCat={item.category} pDis={item.discountPercentage} pRating={item.rating} stock={item.stock} detailsClick={()=>handleDetails(item.id)}/> 
 
                   )
 
