@@ -3,6 +3,7 @@ import CommonHead from './common/CommonHead'
 import axios from 'axios'
 import ProductCard from './ProductCard'
 import Slider from 'react-slick';
+import { useNavigate } from 'react-router';
 const Seller = () => {
     const [allProduct,setAllproducts]=useState([])
     useEffect(()=>{
@@ -43,6 +44,11 @@ const Seller = () => {
       }
     ]
   };
+  const navigate=useNavigate()
+const handleDetails=(productDetails)=>{
+  
+  navigate(`/productDetails/${productDetails}`)
+}
   return (
     <>
 
@@ -53,7 +59,7 @@ const Seller = () => {
 <Slider {...settings}>
 {
 allProduct.slice(0,6).map((item)=>(
-<div><ProductCard key={item.id} productImage={item.thumbnail} producttitle={item.title} pPrice={item.price} pCat={item.category} pDis={item.discountPercentage} pRating={item.rating} stock={item.stock}/> </div>         
+<div><ProductCard key={item.id} productImage={item.thumbnail} producttitle={item.title} pPrice={item.price} pCat={item.category} pDis={item.discountPercentage} pRating={item.rating} stock={item.stock} detailsClick={()=>handleDetails(item.id)}/> </div>         
 ))
 }
 </Slider>

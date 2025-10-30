@@ -5,6 +5,7 @@ import Breadcrumbs from '../components/Breadcrumbs'
 import { Pagination } from 'antd';
 import ProductCard from '../components/ProductCard';
 import axios from 'axios';
+import { useNavigate } from 'react-router';
 const Allproduct = () => {
   const [product,setProduct]=useState([])
   const [skipLimit,setskipLimit]=useState({limit:12,skip:0})
@@ -24,6 +25,11 @@ useEffect(()=>{
   // // console.log(myLocation.pathname.split('/')[1])
   // console.log(currentPage)
  console.log(product)
+ const navigate=useNavigate()
+const handleDetails=(productDetails)=>{
+  
+  navigate(`/productDetails/${productDetails}`)
+}
   return (
     <>
     <section>
@@ -32,7 +38,7 @@ useEffect(()=>{
  <Breadcrumbs pageName={'All Product'}/>
  <div className='flex gap-5 flex-wrap mt-10 justify-center'>
   {
-    product.products?.map((item)=>( <ProductCard  key={item.id} productImage={item.thumbnail} producttitle={item.title} pPrice={item.price} pCat={item.category} pDis={item.discountPercentage} pRating={item.rating} stock={item.stock}/>)
+    product.products?.map((item)=>(<ProductCard  key={item.id} productImage={item.thumbnail} producttitle={item.title} pPrice={item.price} pCat={item.category} pDis={item.discountPercentage} pRating={item.rating} stock={item.stock} detailsClick={()=>handleDetails(item.id)}/>)
 
     )
   }

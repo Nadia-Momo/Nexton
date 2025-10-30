@@ -16,19 +16,60 @@ const ProductDetail = () => {
  const [allProducts,setAllproducts]=useState([])
 const paramsData=useParams()  
 console.log(paramsData)
-useEffect(()=>{
-axios.get(`https://dummyjson.com/products/${paramsData.alu}`)
-.then((res)=>{setSingleProduct(res.data),setImages(res.data.images?.[0])})
-.catch((err)=>console.log(err))
-axios.get('https://dummyjson.com/products')
-.then((res)=>{setAllproducts(res.data.products)})
-.catch((err)=>console.log(err))
-},[])
+const handleShowProduct = (product) => {
+  setSingleProduct(product)
+  setImages(product.images?.[0]) 
+  window.scrollTo({ top: 0, behavior: "smooth" }) 
+}
+
+// useEffect(()=>{
+// axios.get(`https://dummyjson.com/products/${paramsData.alu}`)
+// .then((res)=>{setSingleProduct(res.data),setImages(res.data.images?.[0])})
+// .catch((err)=>console.log(err))
+// axios.get('https://dummyjson.com/products')
+// .then((res)=>{setAllproducts(res.data.products)})
+// .catch((err)=>console.log(err))
+// },[])
+// useEffect(() => {
+ 
+//   const fetchData = async () => {
+//     try {
+     
+//       const singleRes = await axios.get(`https://dummyjson.com/products/${paramsData.alu}`);
+//       setSingleProduct(singleRes.data);
+//       setImages(singleRes.data.images?.[0]);
+
+     
+//       const allRes = await axios.get('https://dummyjson.com/products?limit=100');
+//       setAllproducts(allRes.data.products);
+//     } catch (err) {
+//       console.log(err);
+//     }
+//   };
+
+//   fetchData();
+// }, [paramsData.alu]); 
+useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [singleRes, allRes] = await Promise.all([
+          axios.get(`https://dummyjson.com/products/${paramsData.alu}`),
+          axios.get('https://dummyjson.com/products?limit=200')
+        ]);
+        setSingleProduct(singleRes.data);
+        setImages(singleRes.data.images?.[0]);
+        setAllproducts(allRes.data.products);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchData();
+  }, [paramsData.alu]);
 
 
 
 console.log(singleProduct)
-const categoryProducts=allProducts.filter((item)=>item?.category==singleProduct?.category)
+const categoryProducts=allProducts.filter((item)=>item?.category===singleProduct?.category && item.id!==singleProduct.id)
 console.log(categoryProducts)
   return (
     <>
@@ -130,7 +171,7 @@ console.log(categoryProducts)
 </div>
          </div>
          <div className='mt-[96px] mb-[72px]'>
-            <h2 className='font-poppins font-semibold text-[36px] text-[#111827] '>Recommended products</h2>
+            <h2 className='font-poppins font-semibold text-[36px] text-[#111827]'>Recommended products</h2>
          <div className='flex gap-5 flex-wrap'>
               {
             categoryProducts.map((item)=>(
@@ -142,6 +183,7 @@ console.log(categoryProducts)
    pRating={item.rating}
    stock={item.stock}
    pDis={item.discountPercentage}
+detailsClick={(()=>handleShowProduct(item))}
    />
             ))
            }

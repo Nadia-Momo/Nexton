@@ -4,11 +4,12 @@ import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } 
 import LayoutOne from './layouts/LayoutOne'
 import Home from './pages/Home'
 import Checkout from './pages/Checkout'
-import ProductDetail from './pages/productDetail'
+
 import Local from './pages/Local'
 import Allproduct from './pages/Allproduct'
 import Login from './components/Login'
 import Register from './components/Register'
+import ProductDetail from './pages/ProductDetail'
 
 const App = () => {
   const myRoute=createBrowserRouter(createRoutesFromElements(
