@@ -9,6 +9,7 @@ import { IoBagHandleOutline } from "react-icons/io5";
 import { FaRegEye } from "react-icons/fa";
 import axios from 'axios';
 import ProductCard from '../components/ProductCard';
+import Breadcrumbs from '../components/Breadcrumbs';
 const ProductDetail = () => {
  const [singleProduct,setSingleProduct]=useState('')   
  const [images,setImages]=useState('')
@@ -31,10 +32,10 @@ const categoryProducts=allProducts.filter((item)=>item?.category==singleProduct?
 console.log(categoryProducts)
   return (
     <>
-    <section id="ProductDetail">
-
-        <div className="container">
-            <div className="productRow flex justify-between">
+<section id="ProductDetail">
+<div className="container">
+    <Breadcrumbs pageName={'Product Detail'} pageLink={`/productDetails/${paramsData.alu}`} subPagename={singleProduct.title}/>
+            <div className="productRow flex justify-between mt-4">
                 <div className="productImages flex gap-6">
                     <div className='flex flex-col gap-4'>
                         {

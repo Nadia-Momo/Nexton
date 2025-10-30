@@ -18,17 +18,17 @@ const Banner = () => {
 <div className="slider-container banner_slider hidden lg:block">
       <Slider {...settings}>
         <div>
-         <Link href="#">
+         <Link to="/all-product">
          <img className='w-full' src={bannerImg} alt="" />
          </Link>
         </div>
            <div>
-         <Link href="#">
+         <Link to="/all-product">
          <img className='w-full' src={bannerImg} alt="" />
          </Link>
         </div>
              <div>
-         <Link href="#">
+         <Link to="/all-product">
          <img className='w-full' src={bannerImg} alt="" />
          </Link>
         </div>
