@@ -3,12 +3,12 @@ import { IoIosStar } from "react-icons/io";
 import { IoBagHandleOutline } from "react-icons/io5";
 import { FaRegEye } from "react-icons/fa";
 import { Link } from 'react-router';
-const ProductCard = ({productImage,producttitle,pPrice,pCat,pDis,pRating,stock,detailsClick}) => {
+const ProductCard = ({productImage,producttitle,pPrice,pCat,pDis,pRating,stock,detailsClick,cartClick}) => {
 return (
 <>
 <div className='w-[312px] lg:w-[309px] h-[448px] mt-[40px] relative group overflow-hidden'>
   <div className='absolute top-1 right-[-50px] p-5 flex flex-col gap-2 group-hover:right-4 duration-[1s]'>
-    <button className='p-2 rounded-full bg-white active:scale-[1.1] hover:bg-black hover:text-white hover:duration-[1s]'><IoBagHandleOutline /></button>
+    <button onClick={cartClick} className='p-2 rounded-full bg-white active:scale-[1.1] hover:bg-black hover:text-white hover:duration-[1s]'><IoBagHandleOutline /></button>
 <button onClick={detailsClick}  className='p-2 rounded-full bg-white active:scale-[1.1] hover:bg-black hover:text-white hover:duration-[1s]'><FaRegEye /></button>
   </div>
 <div className='w-full h-[347px] bg-gray-100 rounded-[16px] overflow-hidden'>

@@ -10,6 +10,8 @@ import Allproduct from './pages/Allproduct'
 import Login from './components/Login'
 import Register from './components/Register'
 import ProductDetail from './pages/ProductDetail'
+import CategoryDetail from './components/CategoryDetail'
+import { ToastContainer } from 'react-toastify'
 
 const App = () => {
   const myRoute=createBrowserRouter(createRoutesFromElements(
@@ -21,10 +23,12 @@ const App = () => {
 <Route path='/local' element={<Local/>}/>
 <Route path='/login' element={<Login/>}/>
 <Route path='/register' element={<Register/>}/>
+<Route path='/categoryDetails/:alu' element={<CategoryDetail/>}/>
     </Route>
   ))
   return (
     <>
+        <ToastContainer/>
     <RouterProvider router={myRoute}/>
     </>
   )
